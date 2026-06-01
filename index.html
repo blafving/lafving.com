@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brandon Lafving — AI Product</title>
+  <meta name="description" content="AI product owner and technical PM at Wharton. Building things at the intersection of language, technology, and human need." />
+
+  <!-- Open Graph / LinkedIn / Facebook -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://lafving.com/" />
+  <meta property="og:title"       content="Brandon Lafving — AI Product" />
+  <meta property="og:description" content="AI product owner and technical PM at Wharton. Building things at the intersection of language, technology, and human need." />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card"        content="summary" />
+  <meta name="twitter:url"         content="https://lafving.com/" />
+  <meta name="twitter:title"       content="Brandon Lafving — AI Product" />
+  <meta name="twitter:description" content="AI product owner and technical PM at Wharton. Building things at the intersection of language, technology, and human need." />
+
+  <link rel="stylesheet" href="./fonts.css" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Backgrounds — blue-indigo undertone (hue ~220°) */
+      --bg:        #0b0f15;
+      --bg-2:      #111620;
+      --bg-3:      #181e2a;
+      --bg-4:      #1e2535;
+      /* Borders — cool tinted */
+      --border:    rgba(148,180,220,0.09);
+      --border-hi: rgba(148,180,220,0.18);
+      /* Accents */
+      --cyan:      #4fc3f7;
+      --cyan-dim:  rgba(79,195,247,0.10);
+      --amber:     #e8a048;
+      --amber-dim: rgba(232,160,72,0.10);
+      --pink:      #f06292;
+      --pink-dim:  rgba(240,98,146,0.10);
+      --green:     #4dd0a8;
+      --green-dim: rgba(77,208,168,0.10);
+      /* Text ramp */
+      --text:      #e4e8ef;  /* primary */
+      --lead:      #ccd6e0;  /* lead-in paragraphs */
+      --tagline:   #b8c4d0;  /* hero tagline, connect prose */
+      --prose:     #b0bcc9;  /* mid prose — pitch, about body */
+      --muted:     #7a8799;  /* descriptions, dates, kickers */
+      --subdued:   #5a6778;  /* UI chrome — labels, footer, sidebar kickers */
+      /* disabled = --muted + text-decoration: line-through */
+      /* Typefaces */
+      --mono:      'IBM Plex Mono', monospace;
+      --display:   'Bricolage Grotesque', sans-serif;
+      --body:      'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 48px;
+      height: 60px;
+      background: rgba(13,16,20,0.90);
+      backdrop-filter: blur(16px);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─── HERO ────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 140px 48px 100px;
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--body);
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--tagline);
+      letter-spacing: 0;
+      text-transform: none;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.1s;
+    }
+
+    .hero-name {
+      font-family: var(--display);
+      font-size: clamp(54px, 7vw, 92px);
+      font-weight: 700;
+      line-height: 0.93;
+      color: var(--cyan);
+      letter-spacing: -0.025em;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.2s;
+    }
+
+    .hero-title { display: none; }
+
+    .hero-tagline {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--tagline);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.3s;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards 0.5s;
+    }
+
+    .btn-primary {
+      background: var(--cyan);
+      color: #0d1014;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 13px 26px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cyan);
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 13px 26px;
+      border: 0.5px solid rgba(79,195,247,0.4);
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { background: var(--cyan-dim); transform: translateY(-1px); }
+
+    /* ─── PITCH / THOUGHT BUBBLES ────────────────────── */
+
+    /* shared bubble container */
+    .bubble {
+      padding: 80px 48px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    /* centred, large — the question */
+    .bubble-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+
+    .bubble-center .bubble-inner {
+      max-width: 680px;
+      text-align: center;
+    }
+
+    .pitch-question {
+      font-family: var(--display);
+      font-size: clamp(30px, 4.5vw, 56px);
+      font-weight: 300;
+      color: var(--cyan);
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+
+    .bubble-text p {
+      font-size: 17px;
+      color: var(--prose);
+      line-height: 1.85;
+    }
+
+    .bubble-kicker {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--subdued);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    /* full-width text, drifted to one side */
+    .bubble-drift-right {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .bubble-drift-right .bubble-inner {
+      max-width: 620px;
+    }
+
+    .bubble-drift-right .bubble-inner p {
+      font-size: 17px;
+      color: var(--prose);
+      line-height: 1.85;
+    }
+
+    .bubble-drift-left {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .bubble-drift-left .bubble-inner {
+      max-width: 560px;
+    }
+
+    .bubble-risks {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .risks-kicker {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--subdued);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .risk-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .risk-item {
+      display: flex;
+      gap: 18px;
+      align-items: baseline;
+      padding: 22px 24px;
+      background: var(--bg-2);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .risk-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--subdued);
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+      padding-top: 3px;
+    }
+
+    .risk-text {
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .pitch-close {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    /* ─── CRED STRIP (hidden — replaced by pitch section) ── */
+    .cred-strip { display: none; }
+
+    /* ─── SECTION SCAFFOLDING ─────────────────────────── */
+    .section-outer {
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    section {
+      padding: 80px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--cyan);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 0.5px;
+      background: var(--cyan);
+      opacity: 0.5;
+    }
+
+    .section-heading {
+      font-family: var(--display);
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    /* ─── ABOUT ───────────────────────────────────────── */
+    .about-body {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-prose p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--prose);
+      margin-bottom: 22px;
+    }
+
+    .about-prose p:first-child {
+      font-size: 19px;
+      font-weight: 300;
+      color: var(--lead);
+      line-height: 1.75;
+    }
+
+    .about-prose .pull {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--cyan);
+      line-height: 1.5;
+      border-left: 2px solid var(--cyan);
+      padding-left: 20px;
+      margin: 32px 0;
+      opacity: 0.85;
+    }
+
+    .about-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .sidebar-block {
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      background: var(--bg-2);
+    }
+
+    .sidebar-block-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--subdued);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-block ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-block li {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .sidebar-block li::before {
+      content: '›';
+      color: var(--cyan);
+      opacity: 0.6;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── PRODUCTS ────────────────────────────────────── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--bg-2);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      border-color: var(--border-hi);
+      background: var(--bg-3);
+    }
+
+    .product-card-accent {
+      width: 3px;
+      height: 32px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .accent-cyan  { background: var(--cyan); }
+    .accent-amber { background: var(--amber); }
+    .accent-pink  { background: var(--pink); }
+    .accent-green { background: var(--green); }
+
+    .product-name {
+      font-family: var(--display);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .product-meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .product-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+
+    .product-chips {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-chip {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      border: 0.5px solid var(--border-hi);
+      border-radius: 3px;
+      padding: 4px 10px;
+      letter-spacing: 0.04em;
+    }
+
+    .outcome-chip {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--amber);
+      background: var(--amber-dim);
+      border: 0.5px solid rgba(232,160,72,0.2);
+      border-radius: 3px;
+      padding: 4px 10px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── PROJECTS ────────────────────────────────────── */
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .project-item {
+      border-bottom: 0.5px solid var(--border);
+      padding: 32px 0;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .project-item:last-child { border-bottom: none; }
+
+    .project-left {
+      padding-top: 3px;
+    }
+
+    .project-org {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--amber);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .project-name {
+      font-family: var(--display);
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .project-date {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .project-right p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .project-right p:last-child { margin-bottom: 0; }
+
+    /* ─── TALKS ───────────────────────────────────────── */
+    .talk-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .talk-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 24px;
+      align-items: start;
+      padding: 22px 0;
+      border-bottom: 0.5px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .talk-item:last-child { border-bottom: none; }
+
+    .talk-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(232,160,72,0.7); /* amber @ 0.7 — warm metadata */
+      padding-top: 2px;
+      text-align: right;
+    }
+
+    .talk-title {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .talk-venue {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: rgba(232,160,72,0.7); /* amber @ 0.7 — warm metadata */
+    }
+
+    .talk-badge {
+      font-family: var(--mono);
+      font-size: 10px;
+      padding: 3px 9px;
+      border-radius: 3px;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .badge-featured {
+      color: var(--amber);
+      border: 0.5px solid rgba(232,160,72,0.3);
+      background: var(--amber-dim);
+    }
+
+    .badge-workshop {
+      color: var(--green);
+      border: 0.5px solid rgba(77,208,168,0.3);
+      background: var(--green-dim);
+    }
+
+    /* ─── IDEAS ───────────────────────────────────────── */
+    .ideas-intro {
+      max-width: 640px;
+      margin-bottom: 52px;
+    }
+
+    .ideas-intro p {
+      font-size: 16px;
+      color: var(--prose);
+      line-height: 1.8;
+    }
+
+    .ideas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .idea-card {
+      background: var(--bg-2);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 26px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .idea-card:hover {
+      border-color: var(--border-hi);
+      background: var(--bg-3);
+    }
+
+    .idea-type {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .type-essay   { color: var(--cyan); }
+    .type-exp     { color: var(--amber); }
+    .type-product { color: var(--pink); }
+    .type-research { color: var(--green); }
+
+    .idea-title {
+      font-family: var(--display);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+    }
+
+    .idea-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .idea-status {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 14px;
+      letter-spacing: 0.06em;
+    }
+
+    .ideas-note {
+      margin-top: 32px;
+      padding: 20px 24px;
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg-2);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    .ideas-note span { color: var(--cyan); }
+
+    /* ─── CONNECT ─────────────────────────────────────── */
+    .connect-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .connect-prose p {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--tagline);
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .connect-prose p:last-of-type { margin-bottom: 32px; }
+
+    .connect-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .connect-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--bg-2);
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .connect-link:hover {
+      border-color: var(--border-hi);
+      background: var(--bg-3);
+    }
+
+    .connect-link-icon {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--cyan);
+      width: 24px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .connect-link-text {
+      flex: 1;
+    }
+
+    .connect-link-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--subdued);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .connect-link-value {
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 0.5px solid var(--border);
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      animation: pulse 2.5s ease infinite;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--subdued);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--muted); }
+
+    /* ─── ANIMATIONS ──────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.35; }
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-body    { grid-template-columns: 1fr; gap: 40px; }
+      .connect-body  { grid-template-columns: 1fr; gap: 40px; }
+      .project-item  { grid-template-columns: 1fr; gap: 12px; }
+      .talk-item     { grid-template-columns: 60px 1fr; }
+      .talk-item .talk-badge { display: none; }
+    }
+
+    @media (max-width: 680px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 20px; }
+      .hero-content { padding: 110px 20px 70px; }
+      section { padding: 56px 20px; }
+      footer { padding: 20px; }
+      .talk-item { grid-template-columns: 1fr; }
+      .talk-date { text-align: left; }
+      .bubble { padding: 56px 20px; }
+      .bubble-drift-right,
+      .bubble-drift-left { justify-content: flex-start; }
+      .risk-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ── Mobile nav / hamburger ─────────────────────────────── */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 22px;
+      height: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 101;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--muted);
+      border-radius: 1px;
+      transition: background 0.2s, transform 0.25s, opacity 0.2s;
+      transform-origin: center;
+    }
+    .nav-toggle:hover span { background: var(--cyan); }
+
+    /* Animate to X when open */
+    #site-nav.nav-open .nav-toggle span:nth-child(1) { transform: translateY(7.25px) rotate(45deg); background: var(--cyan); }
+    #site-nav.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+    #site-nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7.25px) rotate(-45deg); background: var(--cyan); }
+
+    @media (max-width: 480px) {
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0; right: 0;
+        background: rgba(13,16,20,0.97);
+        backdrop-filter: blur(20px);
+        border-bottom: 0.5px solid var(--border);
+        padding: 16px 0 24px;
+        gap: 0;
+        list-style: none;
+      }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: block;
+        padding: 12px 24px;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.2s, background 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--cyan);
+        background: var(--cyan-dim);
+      }
+      #site-nav.nav-open .nav-links { display: flex; }
+    }
+
+  </style>
+
+  <!-- Structured data: Schema.org Person — improves Google Knowledge Panel & rich snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Brandon Lafving",
+    "url": "https://lafving.com",
+    "email": "brandon@lafving.com",
+    "jobTitle": "AI Product Owner",
+    "description": "AI product owner and technical PM at Wharton. Building things at the intersection of language, technology, and human need.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Philadelphia",
+      "addressRegion": "PA",
+      "addressCountry": "US"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Princeton University"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Wharton School, University of Pennsylvania"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/brandonlafving"
+    ],
+    "knowsAbout": [
+      "Artificial Intelligence",
+      "Product Management",
+      "Generative AI",
+      "Large Language Models",
+      "Retrieval-Augmented Generation",
+      "AWS Bedrock",
+      "Technical Product Ownership"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="site-nav">
+    <a class="nav-logo" href="#">LAFVING.COM</a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#products">products</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#talks">talks</a></li>
+      <li><a href="#ideas">ideas</a></li>
+      <li><a href="#connect">connect</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Nice to meet you.</p>
+      <h1 class="hero-name">I'm Brandon.</h1>
+      <p class="hero-tagline"></p>
+      <div class="hero-ctas">
+        <a href="#pitch" class="btn-primary">Read on</a>
+        <a href="#connect" class="btn-outline">Connect</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PITCH — Brandon's own words from story.md, as drifting thought bubbles -->
+  <div id="pitch">
+
+    <!-- Bubble 1: The question — centred, large, alone -->
+    <div class="bubble bubble-center">
+      <div class="bubble-inner">
+        <div class="pitch-question">Am I keeping up with AI… or is AI catching up to me?</div>
+      </div>
+    </div>
+
+    <!-- Bubble 2: prose drift left -->
+    <div class="bubble bubble-drift-left">
+      <div class="bubble-inner">
+        <p>Every week, I feel like the world was built just a little bit more for people like me. People with creative ideas and technical curiosity, active explorers with a sense of beauty and a will to win.</p>
+      </div>
+    </div>
+
+    <!-- Bubble 3: kicker + prose, drift right -->
+    <div class="bubble bubble-drift-right">
+      <div class="bubble-inner">
+        <div class="bubble-kicker">What it takes</div>
+        <p>It has never been easier to get a prototype up and running, but it has never been more challenging to build a viable product that won't be stolen from you.</p>
+      </div>
+    </div>
+
+    <!-- Bubble 4: full-width text, slightly right-drifted -->
+    <div class="bubble bubble-drift-right">
+      <div class="bubble-inner">
+        <p>In that kind of environment, you want someone who is completely immersed in the tech, who has a working theory built on personal experience and facts. That person will have an intuition for what's really possible now — and grounded technical reasoning for what will likely be possible a year from now. Only a person like that will be able to prioritize the features and understand the largest risks to your product.</p>
+      </div>
+    </div>
+
+    <!-- Bubble 5: risks -->
+    <div class="bubble bubble-risks">
+      <div class="risks-kicker">Which are:</div>
+      <div class="risk-grid">
+        <div class="risk-item">
+          <span class="risk-num">01</span>
+          <span class="risk-text">Obsolescence before UAT</span>
+        </div>
+        <div class="risk-item">
+          <span class="risk-num">02</span>
+          <span class="risk-text">Second mover (first loser)</span>
+        </div>
+        <div class="risk-item">
+          <span class="risk-num">03</span>
+          <span class="risk-text">Your plans were made on hype</span>
+        </div>
+        <div class="risk-item">
+          <span class="risk-num">04</span>
+          <span class="risk-text">&hellip;and everything else your industry has worried about for decades</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bubble 6: close — left-drifted, quiet -->
+    <div class="bubble bubble-drift-left">
+      <div class="bubble-inner">
+        <p class="pitch-close">Thank you for taking the time to read. Please enjoy the experience of being here, and connect if you see value.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section-outer">
+    <section id="about">
+      <p class="section-label">about</p>
+      <div class="about-body">
+        <div class="about-prose">
+          <p>
+            I grew up competing. Nationally ranked fencer through high school and college — the kind of sport where you read your opponent in real time, make decisions in fractions of a second, and learn that preparation and instinct aren't opposites. Princeton sharpened that into something else: a Comparative Literature degree that taught me how meaning is made, how language carries weight, and how to think across disciplines without losing rigor.
+          </p>
+          <p>
+            Then I spent a decade writing. B2B copy, brand voice, content strategy — for tech companies, telecoms, and a boutique agency where I eventually became the person they called when something was broken and no one knew why. I got curious about the machinery behind the words. Curious enough to pull myself into it.
+          </p>
+          <div class="pull">
+            Technology drew me in because it has both sides — the creative and the technical — and the best products live at that intersection.
+          </div>
+          <p>
+            At Wharton, I've owned AI products from concept through production: a custom course chatbot built on a vector DB of class transcripts, a private elections platform scaled through two successful releases, a school-wide attendance system that shipped a feature the vendor now carries in their production app. I sit with engineers, InfoSec, faculty, and executives — and I speak all of those languages well enough to actually move things forward.
+          </p>
+          <p>
+            I'm second author on a published paper about the Lecture Recall project. I co-chair the AI Special Interest Group and the AI Community of Practice at UPenn. I've given talks on GenAI to audiences from MBA students to IT staff conventions to DataPhilly. I am not a spectator in this moment — I am actively building in it.
+          </p>
+          <p>
+            What I'm looking for next is an AI product that deserves the kind of ownership I know how to give it. Fast-paced, competitive, consequential. I know what that feels like. I'm ready for it again.
+          </p>
+        </div>
+        <div class="about-sidebar">
+          <div class="sidebar-block">
+            <div class="sidebar-block-label">Community</div>
+            <ul>
+              <li>Co-chair, AI Special Interest Group · UPenn</li>
+              <li>Co-chair, AI Community of Practice · UPenn</li>
+              <li>Contributing Member, DataPhilly</li>
+              <li>Contributing Member, Higher Ed Automation Collaboration</li>
+              <li>Volunteer Assistant Coach, UPenn Fencing</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-block-label">Research</div>
+            <ul>
+              <li>Second author: Lecture Recall — Wharton's custom AI course chatbot · 2025</li>
+              <li>Co-led collaboration with AWS Innovation Center on hybrid RAG architecture</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-block-label">Education</div>
+            <ul>
+              <li>Princeton University — BA Comparative Literature, 2006</li>
+              <li>Business Fundamentals · Coursera / Wharton</li>
+              <li>Python Programming Essentials · Coursera / Rice</li>
+              <li>Leading Digital Transformation · Wharton</li>
+              <li>Generative AI & Business Transformation · UPenn / Wharton</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- PRODUCTS -->
+  <div class="section-outer">
+    <section id="products">
+      <p class="section-label">products</p>
+      <p style="font-size:14px; color: var(--muted); font-family: var(--mono); letter-spacing:0.04em; margin-bottom: 40px; max-width: 560px; line-height: 1.7;">
+        Things I own — built, shipped, and still responsible for.
+      </p>
+      <div class="product-grid">
+
+        <div class="product-card">
+          <div class="product-card-accent accent-cyan"></div>
+          <div class="product-name">Lecture Recall</div>
+          <div class="product-meta">Wharton School &nbsp;·&nbsp; 2023 – Present</div>
+          <div class="product-desc">
+            Wharton's custom AI course chatbot — built on a vector database of class transcripts so students can retrieve and query lecture content in natural language. I ideated the prototype as a Custom GPT with actions to a vector DB, led it through beta testing, and am now building v1.0 for Fall 2026 delivery. Coordinated with the AWS Innovation Center on a hybrid architecture that was the first of its kind in higher education. Worked with InfoSec throughout to navigate approval in a complex institutional environment. I'm second author on the published paper.
+          </div>
+          <div class="product-chips">
+            <div class="chip-row">
+              <span class="skill-chip">AWS Bedrock</span>
+              <span class="skill-chip">RAG / Vector DB</span>
+              <span class="skill-chip">Prompt engineering</span>
+              <span class="skill-chip">Python</span>
+            </div>
+            <div class="chip-row">
+              <span class="outcome-chip">Published research</span>
+              <span class="outcome-chip">First hybrid RAG in higher ed</span>
+              <span class="outcome-chip">v1.0 → Fall 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-accent accent-amber"></div>
+          <div class="product-name">Facelect</div>
+          <div class="product-meta">Wharton School &nbsp;·&nbsp; 2022 – Present</div>
+          <div class="product-desc">
+            A custom, private elections application for Wharton — maintained and expanded through two successful releases with usage doubling from 2024 to 2025. Delivered on a $3k total development budget with minimal use of in-house dev resources. I own the roadmap, manage the release cycle, and drove the onboarding work that produced the usage growth.
+          </div>
+          <div class="product-chips">
+            <div class="chip-row">
+              <span class="skill-chip">Product ownership</span>
+              <span class="skill-chip">Release management</span>
+              <span class="skill-chip">Vendor coordination</span>
+            </div>
+            <div class="chip-row">
+              <span class="outcome-chip">2× usage growth 2024→2025</span>
+              <span class="outcome-chip">2 successful releases</span>
+              <span class="outcome-chip">$3k budget</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card-accent accent-pink"></div>
+          <div class="product-name">Attendance &amp; Class Recording</div>
+          <div class="product-meta">Wharton School &nbsp;·&nbsp; 2022 – 2024</div>
+          <div class="product-desc">
+            Led school-wide vendor onboarding to replace an in-house attendance product — from inception through successful deployment across Wharton. Identified a feature gap and designed a custom absence-request workflow that the vendor now ships in their production application. Simultaneously salvaged a parallel in-house build into a well-reviewed Class Recording Permissions product.
+          </div>
+          <div class="product-chips">
+            <div class="chip-row">
+              <span class="skill-chip">Vendor management</span>
+              <span class="skill-chip">Product design</span>
+              <span class="skill-chip">Stakeholder alignment</span>
+            </div>
+            <div class="chip-row">
+              <span class="outcome-chip">School-wide deployment</span>
+              <span class="outcome-chip">Custom feature adopted by vendor</span>
+              <span class="outcome-chip">Two products launched</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section-outer">
+    <section id="projects">
+      <p class="section-label">projects</p>
+      <p style="font-size:14px; color: var(--muted); font-family: var(--mono); letter-spacing:0.04em; margin-bottom: 40px; max-width: 560px; line-height: 1.7;">
+        Strategic initiatives, partnerships, and complex org problems I've navigated.
+      </p>
+      <div class="project-list">
+
+        <div class="project-item">
+          <div class="project-left">
+            <div class="project-org">Wharton / UPenn</div>
+            <div class="project-name">Ethan Mollick GenAI Lab</div>
+            <div class="project-date">2024 – Present</div>
+          </div>
+          <div class="project-right">
+            <p>Strategic partner to Ethan Mollick's Generative AI research lab — consulting on infrastructure for a unique multi-turn prompt testing application. Liaised between research, engineering, and institutional stakeholders. Also served as lecturer for an infrastructure session of The Studio, a masters-level program.</p>
+            <div class="chip-row" style="margin-top:12px;">
+              <span class="skill-chip">GenAI infrastructure</span>
+              <span class="skill-chip">Research partnership</span>
+              <span class="skill-chip">Guest lecturing</span>
+            </div>
+            <div class="chip-row" style="margin-top:6px;">
+              <span class="outcome-chip">Ongoing strategic partnership</span>
+              <span class="outcome-chip">Infrastructure lecture · The Studio Spring 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-left">
+            <div class="project-org">Wharton</div>
+            <div class="project-name">ADIEU — Active Directory Migration</div>
+            <div class="project-date">2023 – 2024</div>
+          </div>
+          <div class="project-right">
+            <p>Built and maintain automated data pipelines from the Calendly API and Wharton information systems into Excel — helping coordinate front-of-house staff as they plan and execute a complex migration of Wharton-domain machines to Kite. Reduced manual coordination overhead and gave operations teams visibility they didn't have before.</p>
+            <div class="chip-row" style="margin-top:12px;">
+              <span class="skill-chip">Python automation</span>
+              <span class="skill-chip">ETL pipeline design</span>
+              <span class="skill-chip">API integration</span>
+            </div>
+            <div class="chip-row" style="margin-top:6px;">
+              <span class="outcome-chip">Reduced manual coordination overhead</span>
+              <span class="outcome-chip">Ops visibility unlocked</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-left">
+            <div class="project-org">STRATACACHE</div>
+            <div class="project-name">Digital Marketing &amp; Infrastructure</div>
+            <div class="project-date">2021 – 2022</div>
+          </div>
+          <div class="project-right">
+            <p>Brought in as a content marketer, I expanded into technical ownership across multiple fronts: created a content taxonomy for the CMS, led the consolidation of two brands' DNS under a single provider, and diagnosed a broken custom Google Tag Manager instance without documentation or access to the original developers. Wrote and maintained a Python integration script for automated content publishing on Contentful.</p>
+            <div class="chip-row" style="margin-top:12px;">
+              <span class="skill-chip">Python scripting</span>
+              <span class="skill-chip">CMS architecture</span>
+              <span class="skill-chip">GTM / analytics</span>
+              <span class="skill-chip">DNS management</span>
+              <span class="skill-chip">SEO / PPC</span>
+            </div>
+            <div class="chip-row" style="margin-top:6px;">
+              <span class="outcome-chip">Conversions 58→85–94 per quarter</span>
+              <span class="outcome-chip">Diagnosed broken GTM — no docs, no original devs</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- TALKS -->
+  <div class="section-outer">
+    <section id="talks">
+      <p class="section-label">talks</p>
+      <div class="talk-list">
+
+        <div class="talk-item">
+          <div class="talk-date">Oct 2025</div>
+          <div>
+            <div class="talk-title">Exploring Wharton's Lecture Recall Tool: A Conversation with Pete Fader</div>
+            <div class="talk-venue">Instructional Design Seminar</div>
+          </div>
+          <div class="talk-badge badge-featured">featured</div>
+        </div>
+
+        <div class="talk-item">
+          <div class="talk-date">May 2025</div>
+          <div>
+            <div class="talk-title">Wharton GenAI Update</div>
+            <div class="talk-venue">UPenn IT Staff Convention</div>
+          </div>
+          <div class="talk-badge badge-featured">keynote</div>
+        </div>
+
+        <div class="talk-item">
+          <div class="talk-date">Apr 2025</div>
+          <div>
+            <div class="talk-title">Workshop: Local LLMs</div>
+            <div class="talk-venue">Wharton Computing / WRDS</div>
+          </div>
+          <div class="talk-badge badge-workshop">workshop</div>
+        </div>
+
+        <div class="talk-item">
+          <div class="talk-date">Jul 2024</div>
+          <div>
+            <div class="talk-title">Slow Down Your Chatbot Build</div>
+            <div class="talk-venue">UPenn AI Special Interest Group</div>
+          </div>
+        </div>
+
+        <div class="talk-item">
+          <div class="talk-date">Jun 2024</div>
+          <div>
+            <div class="talk-title">Failing 10× at Machine Learning</div>
+            <div class="talk-venue">DataPhilly</div>
+          </div>
+        </div>
+
+        <div class="talk-item">
+          <div class="talk-date">2023–24</div>
+          <div>
+            <div class="talk-title">What Is Generative AI?</div>
+            <div class="talk-venue">MBA Office of Career Management · Wharton HR · WRDS · UPenn Alumni Relations</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- IDEAS -->
+  <div class="section-outer">
+    <section id="ideas">
+      <p class="section-label">ideas</p>
+      <div class="ideas-intro">
+        <p>
+          A lab notebook. Essays on philosophy of technology, experiments with AI tooling, half-formed products, published research — whatever I'm turning over. Some of it is finished. Most of it isn't. All of it is honest.
+        </p>
+      </div>
+      <div class="ideas-grid">
+
+        <div class="idea-card">
+          <div class="idea-type type-essay">Essay</div>
+          <div class="idea-title">What does it mean to think with a machine?</div>
+          <div class="idea-desc">Philosophy of technology meets the LLM moment. Where does extended cognition end and outsourcing begin — and does the distinction matter?</div>
+          <div class="idea-status">in-progress</div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-type type-exp">Experiment</div>
+          <div class="idea-title">Claude vs. Codex vs. Opencode: a practitioner's notes</div>
+          <div class="idea-desc">Not a benchmark. A working log of how these tools actually behave when you're trying to ship something real — what they're good at, where they break, and what that tells you about the underlying architecture.</div>
+          <div class="idea-status">// ongoing</div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-type type-product">Product idea</div>
+          <div class="idea-title">The case for async AI office hours</div>
+          <div class="idea-desc">Universities spend enormous resources on synchronous advising that scales poorly. What would a product look like that used RAG + persona modeling to make expert judgment available at scale — without pretending it's the real thing?</div>
+          <div class="idea-status">in-progress</div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-type type-research">Research</div>
+          <div class="idea-title">When to slow down your chatbot build</div>
+          <div class="idea-desc">The talk that became a framework. Institutions rush to deploy AI and skip the hard questions about accuracy, trust, and maintenance. Here's what Lecture Recall taught me about building AI products that actually hold up.</div>
+          <div class="idea-status">writing-up</div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-type type-exp">Experiment</div>
+          <div class="idea-title">AWS Bedrock for the time-constrained PM</div>
+          <div class="idea-desc">What you can actually build with Bedrock if you're not a full-time ML engineer — and what still requires one. Notes from building Lecture Recall without a dedicated data science team.</div>
+          <div class="idea-status">drafting</div>
+        </div>
+
+        <div class="idea-card">
+          <div class="idea-type type-essay">Essay</div>
+          <div class="idea-title">Technology and the shape of attention</div>
+          <div class="idea-desc">Something in the philosophy of technology lineage — Heidegger, Stiegler, Ellul — feels more urgent now than when it was written. An attempt to bring those frameworks into contact with the current AI moment.</div>
+          <div class="idea-status">outline</div>
+        </div>
+
+      </div>
+      <div class="ideas-note">
+        <span>// more arriving</span> &nbsp;·&nbsp; this is a live space, not an archive
+      </div>
+    </section>
+  </div>
+
+  <!-- CONNECT -->
+  <div class="section-outer">
+    <section id="connect">
+      <p class="section-label">connect</p>
+      <div class="connect-body">
+        <div class="connect-prose">
+          <p>
+            I'm looking for an AI product role where ownership is real — not a title attached to a committee. Fast-moving, technically grounded, consequential.
+          </p>
+          <p>
+            Also happy to talk: philosophy of technology, the state of AI tooling, what it actually takes to ship an AI product in a complex org, or fencing.
+          </p>
+          <a href="mailto:brandon@lafving.com" class="btn-primary">Start a conversation</a>
+        </div>
+        <div class="connect-links">
+          <a href="mailto:brandon@lafving.com" class="connect-link">
+            <span class="connect-link-icon">@</span>
+            <div class="connect-link-text">
+              <div class="connect-link-label">Email</div>
+              <div class="connect-link-value">brandon@lafving.com</div>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/brandonlafving" class="connect-link" target="_blank" rel="noopener">
+            <span class="connect-link-icon">in</span>
+            <div class="connect-link-text">
+              <div class="connect-link-label">LinkedIn</div>
+              <div class="connect-link-value">linkedin.com/in/brandonlafving</div>
+            </div>
+          </a>
+          <div class="connect-link" style="cursor:default;">
+            <span class="connect-link-icon" style="color:var(--subdued);">◎</span>
+            <div class="connect-link-text">
+              <div class="connect-link-label">Location</div>
+              <div class="connect-link-value" style="color:var(--muted);">Philadelphia, PA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="status">
+      <span class="status-dot"></span>
+      <span>open to AI product roles &nbsp;·&nbsp; Philadelphia, PA</span>
+    </div>
+    <div class="footer-links">
+      <a href="#about">about</a>
+      <a href="#products">products</a>
+      <a href="#projects">projects</a>
+      <a href="#talks">talks</a>
+      <a href="#ideas">ideas</a>
+      <a href="mailto:brandon@lafving.com">email</a>
+    </div>
+  </footer>
+
+
+  <script>
+    (function () {
+      var nav    = document.getElementById('site-nav');
+      var toggle = nav.querySelector('.nav-toggle');
+      var links  = nav.querySelectorAll('.nav-links a');
+
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('nav-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+
+      // Close drawer when any link is clicked
+      links.forEach(function (a) {
+        a.addEventListener('click', function () {
+          nav.classList.remove('nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                             

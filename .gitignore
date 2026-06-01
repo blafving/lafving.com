@@ -1,0 +1,18 @@
+# Build / install artifacts
+*.msi
+*.exe
+*.zip
+*.pdf
+
+# Data files
+*.csv
+
+# Research / transcripts
+*transcript*
+*Heidegger*
+
+# Design fetch cache
+_design-fetch/
+
+# OS
+.DS_Store
