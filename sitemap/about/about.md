@@ -4,7 +4,7 @@ I --grew up with-- still have two drives:
 
 In high school, that meant I was a nationally ranked fencer... who read a lot of books about magic. I was also painfully aware, as a middling chess player, of the moment when AI beat Гарри Каспаров (Garry Kasparov) at chess.
 
-AI has bested humans time and again over the years at an increasingly impressive array of past-times and full-times. I'd be lying if I said I didn't feel a bit burned by that. 
+AI has bested humans at an increasingly impressive array of past-times and full-times. I'd be lying if I said I didn't feel a bit burned by that. 
 
 But on the other hand, I can't conceive of anything more interesting to explore! 
 
