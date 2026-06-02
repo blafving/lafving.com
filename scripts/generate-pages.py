@@ -4,6 +4,7 @@
 import os
 import re
 import yaml
+import markdown
 
 BASE = "/Users/blafving/Dev/lafving.com"
 PAGES = f"{BASE}/pages"
@@ -121,6 +122,25 @@ def parse_md(filepath):
     return fm, body
 
 
+def md_to_html(md_text):
+    """Convert markdown body to HTML. Strips leading # heading (page <h1> title already set)."""
+    if not md_text:
+        return ""
+    lines = md_text.strip().split('\n')
+    # Strip leading blank lines
+    while lines and not lines[0].strip():
+        lines.pop(0)
+    # Strip leading # heading — redundant with the <h1> page title
+    if lines and lines[0].startswith('# '):
+        lines.pop(0)
+        while lines and not lines[0].strip():
+            lines.pop(0)
+    clean_md = '\n'.join(lines)
+    # Convert markdown -> HTML
+    html = markdown.markdown(clean_md, extensions=['fenced_code', 'tables', 'nl2br'])
+    return html
+
+
 def generate_product_page(fm, body, output_path):
     """Generate a product child page."""
     name = fm.get('name', 'Product')
@@ -165,7 +185,7 @@ def generate_product_page(fm, body, output_path):
       <h1 class="child-heading">{name}</h1>
       <div class="child-meta">{meta}</div>
       <div class="child-body">
-{body}
+{md_to_html(body)}
       </div>
       <div class="chip-row" style="margin-top:32px;">
         {skills_html}
@@ -226,7 +246,7 @@ def generate_project_page(fm, body, output_path):
       <div class="child-meta">{meta}</div>
       {role_html}
       <div class="child-body">
-{body}
+{md_to_html(body)}
       </div>
       <div class="chip-row" style="margin-top:32px;">
         {skills_html}
@@ -279,7 +299,7 @@ def generate_talk_page(fm, body, output_path):
       {badge_html}
       <div class="child-meta">{meta}</div>
       <div class="child-body">
-{body}
+{md_to_html(body)}
       </div>
     </div>
   </div>
@@ -332,7 +352,7 @@ def generate_idea_page(fm, body, output_path):
       <h1 class="child-heading">{title}</h1>
       {desc_html}
       <div class="child-body">
-{body}
+{md_to_html(body)}
       </div>
 {status_html}
     </div>
@@ -390,7 +410,7 @@ def generate_story_page(fm, body, output_path):
       <h1 class="child-heading">{title}</h1>
       <div class="child-meta">{meta}</div>
       <div class="child-body">
-{body}
+{md_to_html(body)}
       </div>
       {tags_html}
     </div>
@@ -448,7 +468,7 @@ def generate_prototype_page(fm, body, output_path):
       <h1 class="child-heading">{name}</h1>
       <div class="child-meta">{meta}</div>
       <div class="child-body">
-{body}
+{md_to_html(body)}
       </div>
       {stack_html}
 {learnings_html}
