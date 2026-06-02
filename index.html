@@ -873,6 +873,8 @@
 
     /* ─── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 24px; }
       .about-body    { grid-template-columns: 1fr; gap: 40px; }
       .connect-body  { grid-template-columns: 1fr; gap: 40px; }
       .project-item  { grid-template-columns: 1fr; gap: 12px; }
@@ -880,9 +882,7 @@
       .talk-item .talk-badge { display: none; }
     }
 
-    @media (max-width: 680px) {
-      nav { padding: 0 20px; }
-      .nav-links { gap: 20px; }
+    @media (max-width: 768px) {
       .hero-content { padding: 110px 20px 70px; }
       section { padding: 56px 20px; }
       footer { padding: 20px; }
@@ -923,7 +923,7 @@
     #site-nav.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
     #site-nav.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7.25px) rotate(-45deg); background: var(--cyan); }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       .nav-toggle { display: flex; }
       .nav-links {
         display: none;
