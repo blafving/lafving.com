@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brandon Lafving — About</title>
+  <meta name="description" content="About Brandon Lafving — AI product owner at Wharton." />
+  <link rel="stylesheet" href="../fonts.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0b0f15;
+      --bg-2:      #111620;
+      --bg-3:      #181e2a;
+      --bg-4:      #1e2535;
+      --border:    rgba(148,180,220,0.09);
+      --border-hi: rgba(148,180,220,0.18);
+      --cyan:      #4fc3f7;
+      --cyan-dim:  rgba(79,195,247,0.10);
+      --amber:     #e8a048;
+      --amber-dim: rgba(232,160,72,0.10);
+      --pink:      #f06292;
+      --pink-dim:  rgba(240,98,146,0.10);
+      --green:     #4dd0a8;
+      --green-dim: rgba(77,208,168,0.10);
+      --text:      #e4e8ef;
+      --lead:      #ccd6e0;
+      --tagline:   #b8c4d0;
+      --prose:     #b0bcc9;
+      --muted:     #7a8799;
+      --subdued:   #5a6778;
+      --mono:      'IBM Plex Mono', monospace;
+      --display:   'Bricolage Grotesque', sans-serif;
+      --body:      'DM Sans', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 48px;
+      height: 60px;
+      background: rgba(13,16,20,0.90);
+      backdrop-filter: blur(16px);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─── ABOUT PAGE ──────────────────────────────────── */
+    .page-outer {
+      padding-top: 60px;
+    }
+
+    .about-page {
+      padding: 80px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-page-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--cyan);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-page-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 0.5px;
+      background: var(--cyan);
+      opacity: 0.5;
+    }
+
+    .about-body {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-prose p {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--prose);
+      margin-bottom: 22px;
+    }
+
+    .about-prose p:first-child {
+      font-size: 19px;
+      font-weight: 300;
+      color: var(--lead);
+      line-height: 1.75;
+    }
+
+    .about-prose .pull {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--cyan);
+      line-height: 1.5;
+      border-left: 2px solid var(--cyan);
+      padding-left: 20px;
+      margin: 32px 0;
+      opacity: 0.85;
+    }
+
+    .about-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .sidebar-block {
+      border: 0.5px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      background: var(--bg-2);
+    }
+
+    .sidebar-block-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--subdued);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-block ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-block li {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .sidebar-block li::before {
+      content: '›';
+      color: var(--cyan);
+      opacity: 0.6;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 0.5px solid var(--border);
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--subdued);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--muted); }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-body { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 680px) {
+      nav { padding: 0 20px; }
+      .about-page { padding: 56px 20px; }
+      footer { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="../index.html">LAFVING.COM</a>
+    <ul class="nav-links">
+      <li><a href="about.html">about</a></li>
+      <li><a href="products.html">products</a></li>
+      <li><a href="projects.html">projects</a></li>
+      <li><a href="talks.html">talks</a></li>
+      <li><a href="ideas.html">ideas</a></li>
+      <li><a href="stories.html">stories</a></li>
+      <li><a href="prototypes.html">prototypes</a></li>
+    </ul>
+  </nav>
+
+  <!-- ABOUT PAGE -->
+  <div class="page-outer">
+    <div class="about-page">
+      <p class="about-page-label">about</p>
+      <div class="about-body">
+        <div class="about-prose">
+          <p>
+            I grew up with — still have two drives:
+          </p>
+          <p>
+            1. To compete, and<br />
+            2. To explore
+          </p>
+          <p>
+            In high school, that meant I was a nationally ranked fencer... who read a lot of books about magic. I was also painfully aware, as a middling chess player, of the moment when AI beat Гарри Каспаров (Garry Kasparov) at chess.
+          </p>
+          <p>
+            AI has bested humans time and again over the years at an increasingly impressive array of past-times and full-times. I'd be lying if I said I didn't feel a bit burned by that.
+          </p>
+          <p>
+            But on the other hand, I can't conceive of anything more interesting to explore!
+          </p>
+          <p>
+            As a fencer, you become aware of the almost-machine-like-tendencies of your opponent: those automatic processes, a parry at one distance, a counterattack at another. You also become aware of your ability to manipulate your own actions, suggesting that you will do one thing when in fact, at the moment of truth — the moment of STABBING — you will do another.
+          </p>
+          <p>
+            So it is with a similar machinistic fascination that I explore AI. It is so interesting to me that it can take a use case and write a working (or nearly working) app for you. And yet, it will get stuck on super obvious problems, and you can watch it talk itself in circles.
+          </p>
+          <div class="pull">
+            What can be done with it? In 2026, the year of agents... A lot.
+          </div>
+        </div>
+        <div class="about-sidebar">
+          <div class="sidebar-block">
+            <div class="sidebar-block-label">Community</div>
+            <ul>
+              <li><a href="talks.html" style="color:inherit;text-decoration:none;">Talks &amp; keynotes</a></li>
+              <li><a href="ideas.html" style="color:inherit;text-decoration:none;">Ideas &amp; essays</a></li>
+              <li><a href="stories.html" style="color:inherit;text-decoration:none;">Stories</a></li>
+              <li>Co-chair, AI Special Interest Group · UPenn</li>
+              <li>Co-chair, AI Community of Practice · UPenn</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-block-label">Work</div>
+            <ul>
+              <li><a href="products.html" style="color:inherit;text-decoration:none;">Products (3)</a></li>
+              <li><a href="projects.html" style="color:inherit;text-decoration:none;">Projects (3)</a></li>
+              <li><a href="prototypes.html" style="color:inherit;text-decoration:none;">Prototypes</a></li>
+              <li>Second author: Lecture Recall · 2025</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <div class="sidebar-block-label">Education</div>
+            <ul>
+              <li>Princeton — BA Comparative Literature, 2006</li>
+              <li>Business Fundamentals · Coursera / Wharton</li>
+              <li>Python Programming Essentials · Coursera / Rice</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div></div>
+    <div class="footer-links">
+      <a href="about.html">about</a>
+      <a href="products.html">products</a>
+      <a href="projects.html">projects</a>
+      <a href="talks.html">talks</a>
+      <a href="ideas.html">ideas</a>
+      <a href="stories.html">stories</a>
+      <a href="prototypes.html">prototypes</a>
+    </div>
+  </footer>
+
+</body>
+</html>

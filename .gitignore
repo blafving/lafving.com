@@ -16,3 +16,5 @@ _design-fetch/
 
 # OS
 .DS_Store
+
+/planning

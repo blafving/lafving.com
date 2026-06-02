@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Technology and the shape of attention — Ideas | Brandon Lafving</title>
+  <link rel="stylesheet" href="../fonts.css" />
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0b0f15; --bg-2: #111620; --bg-3: #181e2a; --bg-4: #1e2535;
+      --border: rgba(148,180,220,0.09); --border-hi: rgba(148,180,220,0.18);
+      --cyan: #4fc3f7; --cyan-dim: rgba(79,195,247,0.10);
+      --amber: #e8a048; --amber-dim: rgba(232,160,72,0.10);
+      --pink: #f06292; --pink-dim: rgba(240,98,146,0.10);
+      --green: #4dd0a8; --green-dim: rgba(77,208,168,0.10);
+      --text: #e4e8ef; --lead: #ccd6e0; --tagline: #b8c4d0;
+      --prose: #b0bcc9; --muted: #7a8799; --subdued: #5a6778;
+      --mono: 'IBM Plex Mono', monospace;
+      --display: 'Bricolage Grotesque', sans-serif;
+      --body: 'DM Sans', sans-serif;
+    }
+    body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.7; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 60px; background: rgba(13,16,20,0.90); backdrop-filter: blur(16px); border-bottom: 0.5px solid var(--border); }
+    .nav-logo { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--cyan); letter-spacing: 0.12em; text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .page-outer { padding-top: 60px; }
+    .child-page { padding: 80px 48px; max-width: 800px; margin: 0 auto; }
+    .page-label { font-family: var(--mono); font-size: 10px; color: var(--cyan); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; }
+    .page-label::before { content: ''; display: inline-block; width: 20px; height: 0.5px; background: var(--cyan); opacity: 0.5; }
+    .child-heading { font-family: var(--display); font-size: clamp(28px, 3.5vw, 42px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; color: var(--text); margin-bottom: 24px; }
+    .child-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 32px; }
+    .child-body p { font-size: 16px; color: var(--prose); line-height: 1.85; margin-bottom: 22px; }
+    .child-body p:first-child { font-size: 19px; font-weight: 300; color: var(--lead); line-height: 1.75; }
+    .child-body .pull { font-family: var(--display); font-size: 22px; font-weight: 300; color: var(--cyan); line-height: 1.5; border-left: 2px solid var(--cyan); padding-left: 20px; margin: 32px 0; opacity: 0.85; }
+    .child-body ul { margin: 0 0 22px 20px; color: var(--prose); line-height: 1.7; }
+    .child-body li { margin-bottom: 6px; }
+    .child-body blockquote { border-left: 2px solid var(--cyan); padding-left: 20px; margin: 22px 0; color: var(--lead); }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .skill-chip { font-family: var(--mono); font-size: 10px; color: var(--muted); border: 0.5px solid var(--border-hi); border-radius: 3px; padding: 4px 10px; letter-spacing: 0.04em; }
+    .outcome-chip { font-family: var(--mono); font-size: 10px; color: var(--amber); background: var(--amber-dim); border: 0.5px solid rgba(232,160,72,0.2); border-radius: 3px; padding: 4px 10px; letter-spacing: 0.04em; }
+    .stack-chip { font-family: var(--mono); font-size: 10px; color: var(--green); border: 0.5px solid rgba(77,208,168,0.2); border-radius: 3px; padding: 4px 10px; letter-spacing: 0.04em; }
+    .learnings-box { margin: 32px 0; padding: 20px 24px; border: 0.5px solid var(--border); border-radius: 6px; background: var(--bg-2); font-family: var(--mono); font-size: 13px; color: var(--prose); line-height: 1.7; }
+    .learnings-box-label { font-size: 10px; color: var(--subdued); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; }
+    .back-link { display: inline-block; font-family: var(--mono); font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.06em; margin-bottom: 32px; }
+    .back-link:hover { color: var(--cyan); }
+    footer { background: var(--bg); border-top: 0.5px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-family: var(--mono); font-size: 11px; color: var(--subdued); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--muted); }
+    @media (max-width: 680px) { nav { padding: 0 20px; } .child-page { padding: 56px 20px; } footer { padding: 20px; } }
+
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="../index.html">LAFVING.COM</a>
+    <ul class="nav-links">
+      <li><a href="about.html">about</a></li>
+      <li><a href="products.html">products</a></li>
+      <li><a href="projects.html">projects</a></li>
+      <li><a href="talks.html">talks</a></li>
+      <li><a href="ideas.html">ideas</a></li>
+      <li><a href="stories.html">stories</a></li>
+      <li><a href="prototypes.html">prototypes</a></li>
+    </ul>
+  </nav>
+  <div class="page-outer">
+    <div class="child-page">
+      <a href="../ideas.html" class="back-link">← ideas</a>
+      <p class="page-label">idea</p>
+      <div class="idea-type type-essay" style="margin-bottom:12px;">Essay</div>
+      <h1 class="child-heading">Technology and the shape of attention</h1>
+      <div style="font-size:14px;color:var(--muted);font-family:var(--mono);letter-spacing:0.04em;margin-bottom:32px;line-height:1.7;">Something in the philosophy of technology lineage — Heidegger, Stiegler, Ellul — feels more urgent now than when it was written. An attempt to bring those frameworks into contact with the current AI moment.</div>
+      <div class="child-body">
+
+      </div>
+<div style="font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.06em;margin-top:32px;">// outline</div>
+    </div>
+  </div>
+  <footer>
+    <div></div>
+    <div class="footer-links">
+      <a href="about.html">about</a>
+      <a href="products.html">products</a>
+      <a href="projects.html">projects</a>
+      <a href="talks.html">talks</a>
+      <a href="ideas.html">ideas</a>
+      <a href="stories.html">stories</a>
+      <a href="prototypes.html">prototypes</a>
+    </div>
+  </footer>
+</body>
+</html>

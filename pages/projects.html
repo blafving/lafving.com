@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Brandon Lafving</title>
+  <link rel="stylesheet" href="../fonts.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0b0f15; --bg-2: #111620; --bg-3: #181e2a; --bg-4: #1e2535;
+      --border: rgba(148,180,220,0.09); --border-hi: rgba(148,180,220,0.18);
+      --cyan: #4fc3f7; --cyan-dim: rgba(79,195,247,0.10);
+      --amber: #e8a048; --amber-dim: rgba(232,160,72,0.10);
+      --pink: #f06292; --pink-dim: rgba(240,98,146,0.10);
+      --green: #4dd0a8; --green-dim: rgba(77,208,168,0.10);
+      --text: #e4e8ef; --lead: #ccd6e0; --tagline: #b8c4d0;
+      --prose: #b0bcc9; --muted: #7a8799; --subdued: #5a6778;
+      --mono: 'IBM Plex Mono', monospace;
+      --display: 'Bricolage Grotesque', sans-serif;
+      --body: 'DM Sans', sans-serif;
+    }
+    body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.7; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 60px; background: rgba(13,16,20,0.90); backdrop-filter: blur(16px); border-bottom: 0.5px solid var(--border); }
+    .nav-logo { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--cyan); letter-spacing: 0.12em; text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .page-outer { padding-top: 60px; }
+    .parent-page { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+    .page-label { font-family: var(--mono); font-size: 10px; color: var(--cyan); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; }
+    .page-label::before { content: ''; display: inline-block; width: 20px; height: 0.5px; background: var(--cyan); opacity: 0.5; }
+    .page-heading { font-family: var(--display); font-size: clamp(28px, 3.5vw, 42px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; color: var(--text); margin-bottom: 16px; }
+    .page-subtitle { font-size: 14px; color: var(--muted); font-family: var(--mono); letter-spacing: 0.04em; margin-bottom: 48px; max-width: 560px; line-height: 1.7; }
+    .project-list { display: flex; flex-direction: column; gap: 0; }
+    .project-item { border-bottom: 0.5px solid var(--border); padding: 32px 0; display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; text-decoration: none; transition: opacity 0.2s; }
+    .project-item:hover { opacity: 0.85; }
+    .project-item:last-child { border-bottom: none; }
+    .project-left { padding-top: 3px; }
+    .project-org { font-family: var(--mono); font-size: 10px; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+    .project-name { font-family: var(--display); font-size: 17px; font-weight: 500; color: var(--text); margin-bottom: 6px; letter-spacing: -0.01em; }
+    .project-date { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.06em; }
+    .project-right p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 14px; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-chip { font-family: var(--mono); font-size: 10px; color: var(--muted); border: 0.5px solid var(--border-hi); border-radius: 3px; padding: 4px 10px; letter-spacing: 0.04em; }
+    .outcome-chip { font-family: var(--mono); font-size: 10px; color: var(--amber); background: var(--amber-dim); border: 0.5px solid rgba(232,160,72,0.2); border-radius: 3px; padding: 4px 10px; letter-spacing: 0.04em; }
+    footer { background: var(--bg); border-top: 0.5px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-family: var(--mono); font-size: 11px; color: var(--subdued); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--muted); }
+    @media (max-width: 680px) { nav { padding: 0 20px; } .parent-page { padding: 56px 20px; } footer { padding: 20px; } .project-item { grid-template-columns: 1fr; gap: 12px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="../index.html">LAFVING.COM</a>
+    <ul class="nav-links">
+      <li><a href="about.html">about</a></li>
+      <li><a href="products.html">products</a></li>
+      <li><a href="projects.html">projects</a></li>
+      <li><a href="talks.html">talks</a></li>
+      <li><a href="ideas.html">ideas</a></li>
+      <li><a href="stories.html">stories</a></li>
+      <li><a href="prototypes.html">prototypes</a></li>
+    </ul>
+  </nav>
+  <div class="page-outer">
+    <div class="parent-page">
+      <p class="page-label">projects</p>
+      <h1 class="page-heading">Projects</h1>
+      <p class="page-subtitle">Strategic initiatives, partnerships, and complex org problems I've navigated. Less "owned product," more "moved a thing through an organization."</p>
+      <div class="project-list">
+        <a href="project/ethan-mollick-genai-lab.html" class="project-item">
+          <div class="project-left">
+            <div class="project-org">Wharton / UPenn</div>
+            <div class="project-name">Ethan Mollick GenAI Lab</div>
+            <div class="project-date">2024 – Present</div>
+          </div>
+          <div class="project-right">
+            <p>Strategic partner to Ethan Mollick's Generative AI research lab — consulting on infrastructure for a unique multi-turn prompt testing application.</p>
+            <div class="chip-row"><span class="skill-chip">GenAI infrastructure</span><span class="skill-chip">Research partnership</span><span class="skill-chip">Guest lecturing</span></div>
+          </div>
+        </a>
+        <a href="project/adieu-active-directory.html" class="project-item">
+          <div class="project-left">
+            <div class="project-org">Wharton</div>
+            <div class="project-name">ADIEU — Active Directory Migration</div>
+            <div class="project-date">2024 – Present</div>
+          </div>
+          <div class="project-right">
+            <p>Built and operate ETL pipelines from internal databases and Calendly API to Excel — helping coordinate front-of-house staff as they plan and execute Wharton-domain machine migrations.</p>
+            <div class="chip-row"><span class="skill-chip">Python automation</span><span class="skill-chip">ETL pipeline design</span><span class="skill-chip">API integration</span></div>
+          </div>
+        </a>
+        <a href="project/stratacache-digital-marketing.html" class="project-item">
+          <div class="project-left">
+            <div class="project-org">STRATACACHE</div>
+            <div class="project-name">Digital Marketing &amp; Infrastructure</div>
+            <div class="project-date">2021 – 2022</div>
+          </div>
+          <div class="project-right">
+            <p>Brought in as a content marketer, expanded into technical ownership: CMS taxonomy, DNS consolidation, GTM diagnosis, automated content publishing.</p>
+            <div class="chip-row"><span class="skill-chip">Python scripting</span><span class="skill-chip">CMS architecture</span><span class="skill-chip">GTM / analytics</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div></div>
+    <div class="footer-links">
+      <a href="about.html">about</a>
+      <a href="products.html">products</a>
+      <a href="projects.html">projects</a>
+      <a href="talks.html">talks</a>
+      <a href="ideas.html">ideas</a>
+      <a href="stories.html">stories</a>
+      <a href="prototypes.html">prototypes</a>
+    </div>
+  </footer>
+</body>
+</html>

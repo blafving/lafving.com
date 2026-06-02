@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stories — Brandon Lafving</title>
+  <link rel="stylesheet" href="../fonts.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0b0f15; --bg-2: #111620; --bg-3: #181e2a; --bg-4: #1e2535;
+      --border: rgba(148,180,220,0.09); --border-hi: rgba(148,180,220,0.18);
+      --cyan: #4fc3f7; --cyan-dim: rgba(79,195,247,0.10);
+      --amber: #e8a048; --amber-dim: rgba(232,160,72,0.10);
+      --pink: #f06292; --pink-dim: rgba(240,98,146,0.10);
+      --green: #4dd0a8; --green-dim: rgba(77,208,168,0.10);
+      --text: #e4e8ef; --lead: #ccd6e0; --tagline: #b8c4d0;
+      --prose: #b0bcc9; --muted: #7a8799; --subdued: #5a6778;
+      --mono: 'IBM Plex Mono', monospace;
+      --display: 'Bricolage Grotesque', sans-serif;
+      --body: 'DM Sans', sans-serif;
+    }
+    body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.7; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 60px; background: rgba(13,16,20,0.90); backdrop-filter: blur(16px); border-bottom: 0.5px solid var(--border); }
+    .nav-logo { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--cyan); letter-spacing: 0.12em; text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .page-outer { padding-top: 60px; }
+    .parent-page { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+    .page-label { font-family: var(--mono); font-size: 10px; color: var(--cyan); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; }
+    .page-label::before { content: ''; display: inline-block; width: 20px; height: 0.5px; background: var(--cyan); opacity: 0.5; }
+    .page-heading { font-family: var(--display); font-size: clamp(28px, 3.5vw, 42px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; color: var(--text); margin-bottom: 16px; }
+    .page-subtitle { font-size: 14px; color: var(--muted); font-family: var(--mono); letter-spacing: 0.04em; margin-bottom: 48px; max-width: 560px; line-height: 1.7; }
+    .stories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .idea-card { background: var(--bg-2); border: 0.5px solid var(--border); border-radius: 6px; padding: 26px; transition: border-color 0.2s, background 0.2s; text-decoration: none; }
+    .idea-card:hover { border-color: var(--border-hi); background: var(--bg-3); }
+    .idea-title { font-family: var(--display); font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; line-height: 1.35; }
+    .idea-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .story-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .story-tag { font-family: var(--mono); font-size: 9px; color: var(--cyan); opacity: 0.6; letter-spacing: 0.06em; }
+    footer { background: var(--bg); border-top: 0.5px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-family: var(--mono); font-size: 11px; color: var(--subdued); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--muted); }
+    @media (max-width: 680px) { nav { padding: 0 20px; } .parent-page { padding: 56px 20px; } footer { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="../index.html">LAFVING.COM</a>
+    <ul class="nav-links">
+      <li><a href="about.html">about</a></li>
+      <li><a href="products.html">products</a></li>
+      <li><a href="projects.html">projects</a></li>
+      <li><a href="talks.html">talks</a></li>
+      <li><a href="ideas.html">ideas</a></li>
+      <li><a href="stories.html">stories</a></li>
+      <li><a href="prototypes.html">prototypes</a></li>
+    </ul>
+  </nav>
+  <div class="page-outer">
+    <div class="parent-page">
+      <p class="page-label">stories</p>
+      <h1 class="page-heading">Stories</h1>
+      <p class="page-subtitle">Narrative content. Autobiographical stories and essays on technology, told as narrative rather than analysis.</p>
+      <div class="stories-grid">
+        <a href="story/at-wharton.html" class="idea-card">
+          <div class="idea-title">At Wharton, owning AI from concept to production</div>
+          <div class="idea-desc">AI products from chatbot to elections to attendance — from idea to shipping.</div>
+          <div class="story-tags"><span class="story-tag">Wharton</span><span class="story-tag">AI</span><span class="story-tag">ownership</span></div>
+        </a>
+        <a href="story/keeping-up-with-ai.html" class="idea-card">
+          <div class="idea-title">Am I keeping up with AI, or is AI catching up to me?</div>
+          <div class="idea-desc">Every week, the world was built a little more for creative-technical explorers.</div>
+          <div class="story-tags"><span class="story-tag">AGI</span><span class="story-tag">creative-technical</span></div>
+        </a>
+        <a href="story/dallas-to-princeton.html" class="idea-card">
+          <div class="idea-title">Dallas to Princeton, and how a poet fell for technology</div>
+          <div class="idea-desc">Comparative Literature, Sci-Fi, and the strange path to tech.</div>
+          <div class="story-tags"><span class="story-tag">origin</span><span class="story-tag">literature</span></div>
+        </a>
+        <a href="story/decade-of-writing.html" class="idea-card">
+          <div class="idea-title">A decade of writing, and the curiosity that pulled me out of it</div>
+          <div class="idea-desc">B2B copy, brand voice, content strategy — and the machinery behind the words.</div>
+          <div class="story-tags"><span class="story-tag">copywriting</span><span class="story-tag">career-shift</span></div>
+        </a>
+        <a href="story/fencer-to-product-owner.html" class="idea-card">
+          <div class="idea-title">Fencer to product owner</div>
+          <div class="idea-desc">Nationally ranked fencer, Comparative Lit degree, and the discipline that carried me forward.</div>
+          <div class="story-tags"><span class="story-tag">fencing</span><span class="story-tag">Princeton</span><span class="story-tag">comparative-literature</span></div>
+        </a>
+        <a href="story/what-im-looking-for.html" class="idea-card">
+          <div class="idea-title">What I'm looking for next</div>
+          <div class="idea-desc">An AI product that deserves real ownership. Fast-paced, competitive, consequential.</div>
+          <div class="story-tags"><span class="story-tag">intent</span><span class="story-tag">product-role</span></div>
+        </a>
+        <a href="story/what-it-takes.html" class="idea-card">
+          <div class="idea-title">What it takes to ship an AI product right now</div>
+          <div class="idea-desc">Obsolescence, second-mover risk, hype — and the moat that protects against them.</div>
+          <div class="story-tags"><span class="story-tag">shipping</span><span class="story-tag">risk</span><span class="story-tag">moat</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div></div>
+    <div class="footer-links">
+      <a href="about.html">about</a>
+      <a href="products.html">products</a>
+      <a href="projects.html">projects</a>
+      <a href="talks.html">talks</a>
+      <a href="ideas.html">ideas</a>
+      <a href="stories.html">stories</a>
+      <a href="prototypes.html">prototypes</a>
+    </div>
+  </footer>
+</body>
+</html>

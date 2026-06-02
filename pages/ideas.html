@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ideas — Brandon Lafving</title>
+  <link rel="stylesheet" href="../fonts.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0b0f15; --bg-2: #111620; --bg-3: #181e2a; --bg-4: #1e2535;
+      --border: rgba(148,180,220,0.09); --border-hi: rgba(148,180,220,0.18);
+      --cyan: #4fc3f7; --cyan-dim: rgba(79,195,247,0.10);
+      --amber: #e8a048; --amber-dim: rgba(232,160,72,0.10);
+      --pink: #f06292; --pink-dim: rgba(240,98,146,0.10);
+      --green: #4dd0a8; --green-dim: rgba(77,208,168,0.10);
+      --text: #e4e8ef; --lead: #ccd6e0; --tagline: #b8c4d0;
+      --prose: #b0bcc9; --muted: #7a8799; --subdued: #5a6778;
+      --mono: 'IBM Plex Mono', monospace;
+      --display: 'Bricolage Grotesque', sans-serif;
+      --body: 'DM Sans', sans-serif;
+    }
+    body { background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.7; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 48px; height: 60px; background: rgba(13,16,20,0.90); backdrop-filter: blur(16px); border-bottom: 0.5px solid var(--border); }
+    .nav-logo { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--cyan); letter-spacing: 0.12em; text-decoration: none; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.08em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .page-outer { padding-top: 60px; }
+    .parent-page { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+    .page-label { font-family: var(--mono); font-size: 10px; color: var(--cyan); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; }
+    .page-label::before { content: ''; display: inline-block; width: 20px; height: 0.5px; background: var(--cyan); opacity: 0.5; }
+    .page-heading { font-family: var(--display); font-size: clamp(28px, 3.5vw, 42px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; color: var(--text); margin-bottom: 16px; }
+    .ideas-intro { max-width: 640px; margin-bottom: 52px; }
+    .ideas-intro p { font-size: 16px; color: var(--prose); line-height: 1.8; }
+    .ideas-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    .idea-card { background: var(--bg-2); border: 0.5px solid var(--border); border-radius: 6px; padding: 26px; transition: border-color 0.2s, background 0.2s; text-decoration: none; }
+    .idea-card:hover { border-color: var(--border-hi); background: var(--bg-3); }
+    .idea-type { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+    .type-essay   { color: var(--cyan); }
+    .type-exp     { color: var(--amber); }
+    .type-product { color: var(--pink); }
+    .type-research { color: var(--green); }
+    .idea-title { font-family: var(--display); font-size: 16px; font-weight: 500; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; line-height: 1.35; }
+    .idea-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .idea-status { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 14px; letter-spacing: 0.06em; }
+    .ideas-note { margin-top: 32px; padding: 20px 24px; border: 0.5px solid var(--border); border-radius: 6px; background: var(--bg-2); font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.02em; }
+    .ideas-note span { color: var(--cyan); }
+    footer { background: var(--bg); border-top: 0.5px solid var(--border); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-family: var(--mono); font-size: 11px; color: var(--subdued); text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--muted); }
+    @media (max-width: 680px) { nav { padding: 0 20px; } .parent-page { padding: 56px 20px; } footer { padding: 20px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="../index.html">LAFVING.COM</a>
+    <ul class="nav-links">
+      <li><a href="about.html">about</a></li>
+      <li><a href="products.html">products</a></li>
+      <li><a href="projects.html">projects</a></li>
+      <li><a href="talks.html">talks</a></li>
+      <li><a href="ideas.html">ideas</a></li>
+      <li><a href="stories.html">stories</a></li>
+      <li><a href="prototypes.html">prototypes</a></li>
+    </ul>
+  </nav>
+  <div class="page-outer">
+    <div class="parent-page">
+      <p class="page-label">ideas</p>
+      <h1 class="page-heading">Ideas</h1>
+      <div class="ideas-intro">
+        <p>A lab notebook. Essays on philosophy of technology, experiments with AI tooling, half-formed products, published research — whatever I'm turning over. Some of it is finished. Most of it isn't. All of it is honest.</p>
+      </div>
+      <div class="ideas-grid">
+        <a href="idea/thinking-with-machines.html" class="idea-card">
+          <div class="idea-type type-essay">Essay</div>
+          <div class="idea-title">What does it mean to think with a machine?</div>
+          <div class="idea-desc">Philosophy of technology meets the LLM moment.</div>
+          <div class="idea-status">in-progress</div>
+        </a>
+        <a href="idea/claude-vs-codex-vs-opencode.html" class="idea-card">
+          <div class="idea-type type-exp">Experiment</div>
+          <div class="idea-title">Claude vs. Codex vs. Opencode: a practitioner's notes</div>
+          <div class="idea-desc">A working log of how these tools actually behave.</div>
+          <div class="idea-status">// ongoing</div>
+        </a>
+        <a href="idea/async-ai-office-hours.html" class="idea-card">
+          <div class="idea-type type-product">Product idea</div>
+          <div class="idea-title">The case for async AI office hours</div>
+          <div class="idea-desc">RAG + persona modeling for expert judgment at scale.</div>
+          <div class="idea-status">in-progress</div>
+        </a>
+        <a href="idea/slow-down-chatbot-build.html" class="idea-card">
+          <div class="idea-type type-research">Research</div>
+          <div class="idea-title">When to slow down your chatbot build</div>
+          <div class="idea-desc">What Lecture Recall taught me about building AI that holds up.</div>
+          <div class="idea-status">writing-up</div>
+        </a>
+        <a href="idea/bedrock-for-pms.html" class="idea-card">
+          <div class="idea-type type-exp">Experiment</div>
+          <div class="idea-title">AWS Bedrock for the time-constrained PM</div>
+          <div class="idea-desc">What you can build with Bedrock without a full-time ML engineer.</div>
+          <div class="idea-status">drafting</div>
+        </a>
+        <a href="idea/shape-of-attention.html" class="idea-card">
+          <div class="idea-type type-essay">Essay</div>
+          <div class="idea-title">Technology and the shape of attention</div>
+          <div class="idea-desc">Heidegger, Stiegler, Ellul in contact with the AI moment.</div>
+          <div class="idea-status">outline</div>
+        </a>
+      </div>
+      <div class="ideas-note"><span>// more arriving</span> &nbsp;·&nbsp; this is a live space, not an archive</div>
+    </div>
+  </div>
+  <footer>
+    <div></div>
+    <div class="footer-links">
+      <a href="about.html">about</a>
+      <a href="products.html">products</a>
+      <a href="projects.html">projects</a>
+      <a href="talks.html">talks</a>
+      <a href="ideas.html">ideas</a>
+      <a href="stories.html">stories</a>
+      <a href="prototypes.html">prototypes</a>
+    </div>
+  </footer>
+</body>
+</html>
