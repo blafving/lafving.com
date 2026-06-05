@@ -8,13 +8,13 @@ status: maintained
 skills:
   - "Product ownership"
   - "Release management"
-  - "Vendor coordination"
+  - "User interviews and active listening"
 outcomes:
   - "2× usage growth 2024→2025"
   - "2 successful releases"
-  - "$3k total development budget"
+  - "Significant budget savings"
 ---
 
 # Facelect
 
-A custom, private elections application for Wharton — maintained and expanded through two successful releases with usage doubling from 2024 to 2025. Delivered on a $3k total development budget with minimal use of in-house dev resources. I own the roadmap, manage the release cycle, and drove the onboarding work that produced the usage growth.
+A custom, private elections application for Wharton. I took on the product when I arrived at Wharton in Fall, 2022. Of Wharton's 10 academic departments, only two used Facelect, and my goal was to expand usage and adoption. Working with one external developer and our infrastructure team, we interviewed key personnel in interested departments, then pushed two releases on a shoestring budget. Our efforts led to two usage in two additional departments: Management and Operations, Information and Decisions, more than doubling adoption. 

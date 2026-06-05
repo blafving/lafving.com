@@ -12,4 +12,10 @@ connected_to:
     slug: lecture-recall
 ---
 
-Part of The Studio, a masters-level program at Wharton. Infrastructure choices made early — model selection, RAG architecture, deployment strategy — determine whether a GenAI product holds up or becomes obsolete before UAT.
+The Studio is a small, masters-level co-curricular program at Wharton. The Studio helps students ideate and prototype ai-driven applications and processes. I was invited to teach one session on infrastructure. My goal was to help students understand the types of decisions they should be thinking about regarding the actual deployment of their idea.
+
+Numerous students both in person and in their course evaluations praised my presentation as being among the best class sessions they experienced at the School.
+
+The presentation: https://d299lnc6vz9c1y.cloudfront.net/ai-infrastructure-presentation/index.html
+
+
